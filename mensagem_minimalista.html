@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mensagem</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fonte Monospaced / Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Fira Code', monospace;
+      background-color: #000000;
+    }
+
+    /* Efeito de Cursor Piscando */
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 1.2em;
+      background-color: #4ade80; /* Verde neon */
+      vertical-align: middle;
+      margin-left: 4px;
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-black text-green-400 flex items-center justify-center p-6 sm:p-12 selection:bg-green-500 selection:text-black">
+
+  <!-- Container Minimalista Centralizado -->
+  <main class="max-w-2xl w-full">
+    <div class="text-lg sm:text-2xl leading-relaxed font-normal tracking-wide text-green-400 drop-shadow-[0_0_10px_rgba(74,222,128,0.4)]">
+      <span id="typed-text"></span><span id="cursor" class="cursor"></span>
+    </div>
+  </main>
+
+  <script>
+    // Apenas a mensagem exata requerida
+    const message = "minha duo, vc sabe q tudo q falo de card e tals é brincadeira ne? ate pq a gente ja falou q vai pegar um e tals, eu vou parar a partir de agr ta? vamos ser felizes (ja somos) viuuuu?";
+    
+    const typedTextElement = document.getElementById('typed-text');
+    let index = 0;
+    const typingSpeed = 50; // Velocidade da digitação (ms)
+
+    function typeWriter() {
+      if (index < message.length) {
+        typedTextElement.textContent += message.charAt(index);
+        index++;
+        setTimeout(typeWriter, typingSpeed);
+      }
+    }
+
+    // Inicia a digitação após a página carregar
+    window.onload = function() {
+      setTimeout(typeWriter, 500);
+    };
+  </script>
+</body>
+</html>
